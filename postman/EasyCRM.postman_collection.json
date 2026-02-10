@@ -1,0 +1,235 @@
+{
+  "info": {
+    "name": "EasyCRM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "EasyCRM API collection. Auth uses Auth0 session cookies. Login in browser at http://localhost:3000/login, then copy the `appSession` cookie into Postman as a `Cookie` header for requests."
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Me",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/me",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "me"]
+        }
+      }
+    },
+    {
+      "name": "Employees - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/employees",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "employees"]
+        }
+      }
+    },
+    {
+      "name": "Employees - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jordan Lee\",\n  \"email\": \"jordan.lee@easycrm.dev\",\n  \"title\": \"Account Manager\",\n  \"department\": \"Sales\",\n  \"status\": \"ACTIVE\",\n  \"salaryCents\": 7200000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/employees",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "employees"]
+        }
+      }
+    },
+    {
+      "name": "Onboarding - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/onboarding",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "onboarding"]
+        }
+      }
+    },
+    {
+      "name": "Onboarding - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"PASTE_EMPLOYEE_ID\",\n  \"title\": \"Complete security training\",\n  \"status\": \"NOT_STARTED\",\n  \"dueDate\": \"2026-02-20\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/onboarding",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "onboarding"]
+        }
+      }
+    },
+    {
+      "name": "Invoices - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/invoices",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "invoices"]
+        }
+      }
+    },
+    {
+      "name": "Invoices - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Everlight Analytics\",\n  \"customerEmail\": \"ap@everlight.com\",\n  \"amountCents\": 210000,\n  \"status\": \"SENT\",\n  \"issuedDate\": \"2026-02-01\",\n  \"dueDate\": \"2026-02-25\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/invoices",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "invoices"]
+        }
+      }
+    },
+    {
+      "name": "Payroll - List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/payroll",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "payroll"]
+        }
+      }
+    },
+    {
+      "name": "Payroll - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cookie",
+            "value": "appSession=PASTE_COOKIE_VALUE",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeId\": \"PASTE_EMPLOYEE_ID\",\n  \"periodStart\": \"2026-01-01\",\n  \"periodEnd\": \"2026-01-15\",\n  \"grossPayCents\": 350000,\n  \"deductionsCents\": 50000,\n  \"netPayCents\": 300000,\n  \"status\": \"PAID\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/payroll",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "payroll"]
+        }
+      }
+    }
+  ]
+}

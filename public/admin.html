@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyCRM Admin</title>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">EasyCRM</span>
+        <span class="pill">Admin</span>
+      </div>
+      <div class="actions">
+        <a class="btn ghost" href="/logout">Logout</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <div>
+          <h1>Admin Control Center</h1>
+          <p id="admin-meta">Loading admin profile...</p>
+        </div>
+        <div class="quick-actions">
+          <a class="btn primary" href="/choose">Switch Role</a>
+          <button class="btn" id="refresh">Refresh Data</button>
+        </div>
+      </section>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="employees">Employees</button>
+        <button class="tab" data-tab="onboarding">Onboarding</button>
+        <button class="tab" data-tab="invoices">Invoices</button>
+        <button class="tab" data-tab="payroll">Payroll</button>
+      </nav>
+
+      <section class="panel active" id="employees">
+        <div class="panel-header">
+          <h2>Employees</h2>
+          <button class="btn outline" data-action="add-employee">Add Employee</button>
+        </div>
+        <div class="grid" id="employees-grid"></div>
+      </section>
+
+      <section class="panel" id="onboarding">
+        <div class="panel-header">
+          <h2>Onboarding</h2>
+          <button class="btn outline" data-action="add-onboarding">New Task</button>
+        </div>
+        <div class="grid" id="onboarding-grid"></div>
+      </section>
+
+      <section class="panel" id="invoices">
+        <div class="panel-header">
+          <h2>Invoices</h2>
+          <button class="btn outline" data-action="add-invoice">New Invoice</button>
+        </div>
+        <div class="grid" id="invoices-grid"></div>
+      </section>
+
+      <section class="panel" id="payroll">
+        <div class="panel-header">
+          <h2>Payroll</h2>
+          <button class="btn outline" data-action="add-payroll">New Pay Record</button>
+        </div>
+        <div class="grid" id="payroll-grid"></div>
+      </section>
+    </main>
+
+    <div class="modal hidden" id="modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modal-title">Create</h3>
+          <button class="icon-btn" id="modal-close">×</button>
+        </div>
+        <form id="modal-form" class="modal-form"></form>
+        <div class="modal-actions">
+          <button class="btn ghost" id="modal-cancel" type="button">Cancel</button>
+          <button class="btn primary" id="modal-submit" type="submit" form="modal-form">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

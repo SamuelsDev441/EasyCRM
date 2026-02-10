@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@localhost:5432/easycrm?schema=public"
+}
+
+enum UserRole {
+  ADMIN
+  EMPLOYEE
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  INACTIVE
+  ONBOARDING
+}
+
+enum OnboardingStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  DONE
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+}
+
+enum PayStatus {
+  PENDING
+  PAID
+}
+
+model User {
+  id          String   @id @default(uuid())
+  auth0Id     String   @unique
+  email       String?  @unique
+  name        String?
+  role        UserRole @default(EMPLOYEE)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lastLoginAt DateTime?
+}
+
+model Employee {
+  id              String          @id @default(uuid())
+  name            String
+  email           String?         @unique
+  title           String?
+  department      String?
+  status          EmployeeStatus  @default(ACTIVE)
+  salaryCents     Int?
+  hourlyRateCents Int?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  onboardingItems OnboardingItem[]
+  payRecords      PayRecord[]
+}
+
+model OnboardingItem {
+  id         String           @id @default(uuid())
+  employee   Employee         @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId String
+  title      String
+  status     OnboardingStatus @default(NOT_STARTED)
+  dueDate    DateTime?
+  notes      String?
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+}
+
+model Invoice {
+  id            String        @id @default(uuid())
+  customerName  String
+  customerEmail String?
+  amountCents   Int
+  status        InvoiceStatus @default(DRAFT)
+  issuedDate    DateTime?
+  dueDate       DateTime?
+  paidDate      DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model PayRecord {
+  id             String     @id @default(uuid())
+  employee       Employee   @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  employeeId     String
+  periodStart    DateTime
+  periodEnd      DateTime
+  grossPayCents  Int
+  deductionsCents Int @default(0)
+  netPayCents    Int
+  status         PayStatus  @default(PENDING)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}

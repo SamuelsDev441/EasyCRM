@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="/css/employee.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">EasyCRM</span>
+        <span class="pill">Employee</span>
+      </div>
+      <div class="actions">
+        <a class="btn ghost" href="/logout">Logout</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <div>
+          <h1>Welcome back</h1>
+          <p id="employee-meta">Loading profile...</p>
+        </div>
+        <div class="quick-actions">
+          <a class="btn primary" href="/admin">Admin View</a>
+          <button class="btn" id="refresh">Refresh</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Onboarding Tasks</h2>
+        </div>
+        <div class="grid" id="onboarding-grid"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Pay Records</h2>
+        </div>
+        <div class="grid" id="payroll-grid"></div>
+      </section>
+    </main>
+
+    <script src="/js/employee.js"></script>
+  </body>
+</html>
